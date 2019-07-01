@@ -13,12 +13,20 @@ var scores, roundScore, activePlayer, dice;
 
 scores = [0,0];
 roundScore = 0;
-activePlayer = 0;
+activePlayer = 1;
 
 dice = Math.floor(Math.random() * 6) + 1;
-console.log(dice);
+//DOM manipulation
 
+document.querySelector('#current-' + activePlayer).textContent = dice;//this is change the value when you reload the page or muve the dices.
+//document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice +'</em>';
 
+var x = document.querySelector('#score-0').textContent;
+console.log(x);
+
+//add css using query selector
+document.querySelector('#score-0').style.color = 'blue';
+document.querySelector('.dice').style.display = 'none';
 
 
 

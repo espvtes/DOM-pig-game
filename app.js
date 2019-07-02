@@ -13,7 +13,7 @@ var scores, roundScore, activePlayer;
 
 scores = [0,0];
 roundScore = 0;
-activePlayer = 1;
+activePlayer = 0;
 
 
 //DOM manipulation
@@ -42,18 +42,26 @@ document.getElementById('current-0').textContent = '0';
 //you can declare the function inside the event listener or outside and then call the function inside of event listener 
 document.querySelector('.btn-roll').addEventListener('click', function() {//the first argument in addEventeListener is the type of event 
     //1-random number
-    var diceDOM = Math.floor(Math.random() * 6) + 1;//random number
+    var dice = Math.floor(Math.random() * 6) + 1;//random number
 
     //2-display the result
-    document.querySelector('.dice');
+    var diceDOM = document.querySelector('.dice');
     diceDOM.style.display = 'block';
     diceDOM.src = 'dice-' + dice + '.png';
 
     //3-update the round score IF the rolled number was not a 1
     if(dice !== 1 ){
-
+        roundScore += dice;
+        document.querySelector('#current-' + activePlayer).textContent = roundScore;
     }else{
         //next player
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+        //is the same likr this:
+        /*if(activePlayer === 0){
+            activePlayer = 0
+        }else{
+            activePlayer = 1;
+        } */
     }
 
 

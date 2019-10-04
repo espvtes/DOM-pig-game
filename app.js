@@ -33,11 +33,8 @@ document.getElementById('score-1').textContent = '0';
 document.getElementById('current-0').textContent = '0';
 document.getElementById('current-0').textContent = '0';
 
-//////HOW TO SET UP AN EVENT HANDLER
-// function btn(){
-//     //Do something here
-// }
-// btn(); // this how you call this function
+
+
 
 //you can declare the function inside the event listener or outside and then call the function inside of event listener 
 document.querySelector('.btn-roll').addEventListener('click', function() {//the first argument in addEventeListener is the type of event 
@@ -56,7 +53,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {//the 
     }else{
         //next player
         activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-        //is the same likr this:
+        //is the same link this:
         /*if(activePlayer === 0){
             activePlayer = 0
         }else{

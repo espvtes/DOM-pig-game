@@ -61,8 +61,10 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         document.getElementById('current-1').textContent = '0';
 
         //HOW TO CHANGE THE PLAYER WHEN the other want it's lost and change the values
-        document.getElementById('.player-0-panel').classList.toggle('active');
-        document.getElementById('.player-1-panel').classList.toggle('active');
+        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-1-panel').classList.toggle('active');
+
+        document.querySelector('.dice').style.display = 'none';
 
     }
 })

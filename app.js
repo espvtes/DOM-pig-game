@@ -27,7 +27,9 @@ init();
 //----or another way is you don't write the function outside like a before you can type inside  of Eventlistener like this 
 //------you can call anonimus function because every thing is going to happen when the click was pressed
 document.querySelector('.btn-roll').addEventListener('click', function(){
-    //random number
+
+    if(gamePlaying){
+         //random number
     dice = Math.floor(Math.random() * 6) + 1; //-----generate the random numbers
     //display the result 
     var diceDOM = document.querySelector('.dice');
@@ -44,12 +46,15 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         nextPlayer();
 
     }
+   } 
 });
 
 
 
 document.querySelector('.btn-hold').addEventListener('click', function() {
-    //Add current score to Global score
+
+    if(gamePlaying){
+        //Add current score to Global score
     scores[activePlayer] += roundScore;
     
     //Update the UI 
@@ -62,10 +67,12 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         document.querySelector('.dice').style.display = 'none';//here you can set the none dispay because on player won the game
         document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
         document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+        gamePlaying = false;
     } else {
 
         nextPlayer();//for not repeat the function principal we call here the function that we decleare outside already
     }
+  }
 });
 
 

@@ -15,20 +15,47 @@ var scores, roundScore, activePlayer;
 
 scores = [0,0];
 roundScore = 0;
-activePlayer = 1;
+activePlayer = 0;
 
 
-dice = Math.floor(Math.random() * 6) + 1; //-how to print the number from 1 to 6 not 0;
+//document.querySelector('#current-' + activePlayer).textContent = dice; //-----read from the dom
+//var x = document.querySelector("#score-0").textContent;//------manipulate the dom
 
-document.querySelector('#current-' + activePlayer).textContent = dice; //connect with dice
+document.querySelector('.dice').style.display = 'none';//------change the css style
+
+//--how to set the all values to 0 
+document.getElementById('score-0').textContent = '0';
+document.getElementById('score-1').textContent = '0';
+document.getElementById('current-0').textContent = '0';
+document.getElementById('current-1').textContent = '0';
 
 
-var x = document.querySelector("#score-0").textContent;
+// function btn(){
+//     //Do something here 
+// }
+//-----set EventListener to the button
+//------here you can call the function with the EventListener without the parenthesis
+//document.querySelector('.btn-roll').addEventListener('click', btn);
 
-document.querySelector('.dice').style.display = 'none';
+//----or another way is you don't write the function outside like a before you can type inside  of Eventlistener like this 
+//------you can call anonimus function because every thing is going to happen when the click was pressed
+document.querySelector('.btn-roll').addEventListener('click', function(){
+    //random number
+    dice = Math.floor(Math.random() * 6) + 1; //-----generate the random numbers
+    //display the result 
+    var diceDOM = document.querySelector('.dice');
+    diceDOM.style.display = 'block';
+    diceDOM.src = 'dice-' + dice + '.png';//---how to change the image of the dice from 1 to 6 with extention.
 
-
-
+    //update the round score 
+    if(dice !== 1){ //type coercion
+        //Add the score
+        roundScore += dice;
+        document.querySelector('#current-' + activePlayer).textContent = roundScore;
+    }else{
+        //Next player
+    }
+})
 
 
 

@@ -11,7 +11,7 @@ GAME RULES:
 
 
 //----CREATE A FUNDAMENTAL GAME VARIABLES
-var scores, roundScore, activePlayer;
+var scores, roundScore, activePlayer, gamePlaying;
 
 init();
 //document.querySelector('#current-' + activePlayer).textContent = dice; //-----read from the dom
@@ -91,6 +91,7 @@ function init(){
     scores = [0,0];
     activePlayer = 0;
     roundScore = 0;
+    gamePlaying = true;
 
     document.querySelector('.dice').style.display = 'none';//------change the css style
 
@@ -101,10 +102,10 @@ function init(){
     document.getElementById('current-1').textContent = '0';
     document.getElementById('name-0').textContent = 'Player 1';
     document.getElementById('name-1').textContent = 'Player 2';
-    document.querySelector('.player-0-panel').textContent.remove('winner');
-    document.querySelector('.player-1-panel').textContent.remove('winner');
-    document.querySelector('.player-0-panel').textContent.remove('winner');
-    document.querySelector('.player-1-panel').textContent.remove('winner');
+    document.querySelector('.player-0-panel').classList.remove('winner');
+    document.querySelector('.player-1-panel').classList.remove('winner');
+    document.querySelector('.player-0-panel').classList.remove('winner');
+    document.querySelector('.player-1-panel').classList.remove('winner');
     document.querySelector('.player-0-panel').classList.add('active');
 
 

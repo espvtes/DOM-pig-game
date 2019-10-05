@@ -52,9 +52,36 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         //Add the score
         roundScore += dice;
         document.querySelector('#current-' + activePlayer).textContent = roundScore;
-    }else{
+    } else{
         //Next player
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+        nextPlayer();
+
+    }
+});
+
+
+
+document.querySelector('.btn-hold').addEventListener('click', function() {
+    //Add current score to Global score
+    scores[activePlayer] += roundScore;
+    
+    //Update the UI 
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];//add the result to the player score
+
+
+    //check if the player won the game
+    if(scores[activePlayer] >= 20){
+        document.querySelector('#name-' + activePlayer).textContent = 'Winner!!!!';//set wich player won the game
+        document.querySelector('.dice').style.display = 'none';//here you can set the none dispay because on player won the game
+    } else {
+
+        nextPlayer();//for not repeat the function principal we call here the function that we decleare outside already
+    }
+});
+
+
+function nextPlayer(){
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
         roundScore = 0;
 
         document.getElementById('current-0').textContent = '0';
@@ -65,20 +92,4 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         document.querySelector('.player-1-panel').classList.toggle('active');
 
         document.querySelector('.dice').style.display = 'none';
-
-    }
-})
-
-
-
-document.querySelector('.btn-hold').addEventListener('click', function() {
-    //Add current score to Global score
-    scores[activePlayer] += roundScore;
-    scores[activePlayer] = scores[activePlayer] + roundScore;
-    
-    //Update the UI 
-
-
-    //check if the player won the game
-
-})
+}

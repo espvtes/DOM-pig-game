@@ -145,8 +145,10 @@ activePlayer = 0;
 //var x = document.querySelector('#score-0').textContent;
 //---how to change css styles 
 document.querySelector('.dice').style.display = 'none';
-
-
+document.getElementById('score-0').textContent = '0';//set the values to 0 of the player
+document.getElementById('score-1').textContent = '0';
+document.getElementById('current-0').textContent = '0';
+document.getElementById('current-1').textContent = '0';
 //how to set up and event handler//define the handler and the anonymous function
 //is only callback when you click the button that assigned
 //the function doesn't have a name

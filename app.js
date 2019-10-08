@@ -117,3 +117,50 @@ function init(){
 
 
 }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------how you create out fundamental game variables 
+var activePlayer, roundScore, scores;
+scores = [0,0];
+roundScore = 0;
+activePlayer = 0;
+
+
+
+//---how to manipulate a DOM
+//---this is how to select the element from dom and change the content
+//document.querySelector('#current-' + activePlayer).textContent = 'dice';
+//---how to read from the dom 
+//var x = document.querySelector('#score-0').textContent;
+//---how to change css styles 
+document.querySelector('.dice').style.display = 'none';
+
+
+//how to set up and event handler//define the handler and the anonymous function
+//is only callback when you click the button that assigned
+//the function doesn't have a name
+document.querySelector('.btn-roll').addEventListener('click', function(){
+    //---how to generate a random number for the scroll the dice
+   var  dice  = Math.floor(Math.random()* 6) + 1;//---howt return random numbers between 1 and 6
+
+   var diceDOM = document.querySelector('.dice');//---select the dice and store into the variable
+   diceDOM.style.display = 'block'//---change style here 
+   diceDOM.src = 'dice-' + dice + '.png';//---you have images from 1 to 6 just change the number like this
+})
+
+
+//another way to select element by id
+//how to change an image on the <img> element
+
+

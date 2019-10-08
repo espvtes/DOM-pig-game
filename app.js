@@ -10,7 +10,7 @@ GAME RULES:
 */
 
 
-//----CREATE A FUNDAMENTAL GAME VARIABLES
+/*//----CREATE A FUNDAMENTAL GAME VARIABLES
 var scores, roundScore, activePlayer, gamePlaying;
 
 init();
@@ -62,7 +62,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 
 
     //check if the player won the game
-    if(scores[activePlayer] >= 20){
+    if(scores[activePlayer] >= 100){
         document.querySelector('#name-' + activePlayer).textContent = 'Winner!!!!';//set wich player won the game
         document.querySelector('.dice').style.display = 'none';//here you can set the none dispay because on player won the game
         document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -79,7 +79,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 function nextPlayer(){
     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
         roundScore = 0;
-
+        
         document.getElementById('current-0').textContent = '0';
         document.getElementById('current-1').textContent = '0';
 
@@ -116,4 +116,4 @@ function init(){
     document.querySelector('.player-0-panel').classList.add('active');
 
 
-}
+}*/

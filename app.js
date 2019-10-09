@@ -159,10 +159,21 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
    var diceDOM = document.querySelector('.dice');//---select the dice and store into the variable
    diceDOM.style.display = 'block'//---change style here 
    diceDOM.src = 'dice-' + dice + '.png';//---you have images from 1 to 6 just change the number like this
+
+    if(dice !== 1){
+        // add score
+    }else{
+        //next player
+    }
+
+
+
 })
 
 
 //another way to select element by id
 //how to change an image on the <img> element
+//what the ternary operator is?
+//how to add, remove and toggle html clases
 
 

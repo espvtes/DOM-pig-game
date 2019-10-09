@@ -166,8 +166,12 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         document.querySelector('#current-' + activePlayer).textContent= roundScore;
 
     }else{
-        //next player
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+        //next player               
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;//this is the ternary operator
+        roundScore = 0;
+
+        document.getElementById('current-0').textContent = '0';
+        document.getElementById('current-1').textContent = '0';
     }
 
 
@@ -177,7 +181,7 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 
 //another way to select element by id
 //how to change an image on the <img> element
-//what the ternary operator is?
+
 //how to add, remove and toggle html clases
 
 

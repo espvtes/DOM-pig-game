@@ -167,24 +167,33 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 
     }else{
         //next player               
-        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;//this is the ternary operator
-        roundScore = 0;
-
-        document.getElementById('current-0').textContent = '0';
-        document.getElementById('current-1').textContent = '0';
-
-        document.querySelector('.player-0-panel').classList.toggle('active');//remove element and inisde the remove function type the name of the class
-        document.querySelector('.player-1-panel').classList.toggle('active');
+        nextPlayer();
     }
 
 
 
 })
 
+//how to use function to correctly apply the DRY principe
+document.querySelector('.btn-hold').addEventListener('click', function(){
+    scores[activePlayer] += roundScore;
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
-//another way to select element by id
-//how to change an image on the <img> element
+    nextPlayer();
+});
 
-//how to add, remove and toggle html clases
 
+//how to think about the game like a programmer
+function nextPlayer(){
+    //next player               
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;//this is the ternary operator
+    roundScore = 0;
+
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
+
+    document.querySelector('.player-0-panel').classList.toggle('active');//remove element and inisde the remove function type the name of the class
+    document.querySelector('.player-1-panel').classList.toggle('active');
+    document.querySelector('.dice').style.display = 'none';//hide the image dice 
+}
 

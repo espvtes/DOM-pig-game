@@ -131,7 +131,7 @@ function init(){
 
 
 //--------how you create out fundamental game variables 
-var activePlayer, roundScore, scores;
+var activePlayer, roundScore, scores, gamePlaying;
 init();
 //---how to manipulate a DOM
 //---this is how to select the element from dom and change the content
@@ -144,42 +144,49 @@ init();
 //is only callback when you click the button that assigned
 //the function doesn't have a name
 document.querySelector('.btn-roll').addEventListener('click', function(){
-    //---how to generate a random number for the scroll the dice
-   var  dice  = Math.floor(Math.random()* 6) + 1;//---howt return random numbers between 1 and 6
+    if(gamePlaying){
 
-   var diceDOM = document.querySelector('.dice');//---select the dice and store into the variable
-   diceDOM.style.display = 'block'//---change style here 
-   diceDOM.src = 'dice-' + dice + '.png';//---you have images from 1 to 6 just change the number like this
-
-    if(dice !== 1){
-        // add score
-        roundScore += dice;
-        document.querySelector('#current-' + activePlayer).textContent= roundScore;
-
-    }else{
-        //next player               
-        nextPlayer();
+        //---how to generate a random number for the scroll the dice
+        var  dice  = Math.floor(Math.random()* 6) + 1;//---howt return random numbers between 1 and 6
+     
+        var diceDOM = document.querySelector('.dice');//---select the dice and store into the variable
+        diceDOM.style.display = 'block'//---change style here 
+        diceDOM.src = 'dice-' + dice + '.png';//---you have images from 1 to 6 just change the number like this
+     
+         if(dice !== 1){
+             // add score
+             roundScore += dice;
+             document.querySelector('#current-' + activePlayer).textContent= roundScore;
+     
+         }else{
+             //next player               
+             nextPlayer();
+         }
     }
 
 
 
-})
+});
 
 //how to use function to correctly apply the DRY principe
 document.querySelector('.btn-hold').addEventListener('click', function(){
-    scores[activePlayer] += roundScore;
-    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+    if(gamePlaying){
 
-
-    //check if the player won
-    if(scores[activePlayer] >= 20){
-        document.querySelector('#name-' + activePlayer).textContent = 'Winner!!!';
-        document.querySelector('.dice').style.display = 'none';
-        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
-        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
-    }else{
-        nextPlayer();
-        
+        scores[activePlayer] += roundScore;
+        document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+    
+    
+        //check if the player won
+        if(scores[activePlayer] >= 20){
+            document.querySelector('#name-' + activePlayer).textContent = 'Winner!!!';
+            document.querySelector('.dice').style.display = 'none';
+            document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+            gamePlaying = false;
+        }else{
+            nextPlayer();
+            
+        }
     }
 
 });
@@ -204,8 +211,9 @@ document.querySelector('.btn-new').addEventListener('click', init);
 //set everything to 0  when the game it's over
 function init(){
     scores = [0,0];
-    roundScore = 0;
     activePlayer = 0;
+    roundScore = 0;
+    gamePlaying = true;
 
     document.querySelector('.dice').style.display = 'none';
 
@@ -213,11 +221,11 @@ function init(){
     document.getElementById('score-1').textContent = '0';
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0';
-    document.getElementById('name-0').textContent = 'player 1';
-    document.getElementById('name-1').textContent = 'player 2';
-    document.querySelector('player-0-panel').classList.remove('winner');
-    document.querySelector('player-1-panel').classList.remove('winner');
-    document.querySelector('player-0-panel').classList.remove('active');
-    document.querySelector('player-1-panel').classList.remove('active');
-    document.querySelector('player-0-panel').classList.add('active');
-}
+    document.getElementById('name-0').textContent = 'Player 1';
+    document.getElementById('name-1').textContent = 'Player 2';
+    document.querySelector('.player-0-panel').classList.remove('winner');
+    document.querySelector('.player-1-panel').classList.remove('winner');
+    document.querySelector('.player-0-panel').classList.remove('active');
+    document.querySelector('.player-1-panel').classList.remove('active');
+    document.querySelector('.player-0-panel').classList.add('active');
+};

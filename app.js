@@ -179,7 +179,18 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
     scores[activePlayer] += roundScore;
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
-    nextPlayer();
+
+    //check if the player won
+    if(scores[activePlayer] >= 20){
+        document.querySelector('#name-' + activePlayer).textContent = 'Winner!!!';
+        document.querySelector('.dice').style.display = 'none';
+        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+        document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+    }else{
+        nextPlayer();
+        
+    }
+
 });
 
 

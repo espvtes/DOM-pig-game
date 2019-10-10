@@ -132,23 +132,14 @@ function init(){
 
 //--------how you create out fundamental game variables 
 var activePlayer, roundScore, scores;
-scores = [0,0];
-roundScore = 0;
-activePlayer = 0;
-
-
-
+init();
 //---how to manipulate a DOM
 //---this is how to select the element from dom and change the content
 //document.querySelector('#current-' + activePlayer).textContent = 'dice';
 //---how to read from the dom 
 //var x = document.querySelector('#score-0').textContent;
 //---how to change css styles 
-document.querySelector('.dice').style.display = 'none';
-document.getElementById('score-0').textContent = '0';//set the values to 0 of the player
-document.getElementById('score-1').textContent = '0';
-document.getElementById('current-0').textContent = '0';
-document.getElementById('current-1').textContent = '0';
+
 //how to set up and event handler//define the handler and the anonymous function
 //is only callback when you click the button that assigned
 //the function doesn't have a name
@@ -206,5 +197,27 @@ function nextPlayer(){
     document.querySelector('.player-0-panel').classList.toggle('active');//remove element and inisde the remove function type the name of the class
     document.querySelector('.player-1-panel').classList.toggle('active');
     document.querySelector('.dice').style.display = 'none';//hide the image dice 
-}
+};
 
+document.querySelector('.btn-new').addEventListener('click', init);
+
+//set everything to 0  when the game it's over
+function init(){
+    scores = [0,0];
+    roundScore = 0;
+    activePlayer = 0;
+
+    document.querySelector('.dice').style.display = 'none';
+
+    document.getElementById('score-0').textContent = '0';//set the values to 0 of the player
+    document.getElementById('score-1').textContent = '0';
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
+    document.getElementById('name-0').textContent = 'player 1';
+    document.getElementById('name-1').textContent = 'player 2';
+    document.querySelector('player-0-panel').classList.remove('winner');
+    document.querySelector('player-1-panel').classList.remove('winner');
+    document.querySelector('player-0-panel').classList.remove('active');
+    document.querySelector('player-1-panel').classList.remove('active');
+    document.querySelector('player-0-panel').classList.add('active');
+}

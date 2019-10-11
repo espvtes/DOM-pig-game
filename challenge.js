@@ -12,6 +12,7 @@ GAME RULES:
 //--------how you create out fundamental game variables 
 var activePlayer, roundScore, scores, gamePlaying;
 init();
+var lastDice;
 //---how to manipulate a DOM
 //---this is how to select the element from dom and change the content
 //document.querySelector('#current-' + activePlayer).textContent = 'dice';
@@ -31,8 +32,11 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         var diceDOM = document.querySelector('.dice');//---select the dice and store into the variable
         diceDOM.style.display = 'block'//---change style here 
         diceDOM.src = 'dice-' + dice + '.png';//---you have images from 1 to 6 just change the number like this
-     
-         if(dice !== 1){
+        if(dice === 6 && lastDice === 6){
+            scores[activePlayer] = 0;
+            document.querySelector('#score-' + activePlayer).textContent = '0';
+            nextPlayer();
+        }else if(dice !== 1){
              // add score
              roundScore += dice;
              document.querySelector('#current-' + activePlayer).textContent= roundScore;
@@ -41,6 +45,7 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
              //next player               
              nextPlayer();
          }
+         lastDice = dice;
     }
 
 

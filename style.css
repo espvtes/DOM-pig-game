@@ -21,7 +21,6 @@
 }
 
 
-
 * {
     margin: 0;
     padding: 0;
@@ -161,7 +160,18 @@ i {
 .btn-roll { top: 403px;}
 .btn-hold { top: 467px;}
 
-.dice {
+#dice-1{
+    top: 120px;
+}
+
+#dice-2{
+    top: 250px;
+}
+
+
+
+
+.dice, .dice2 {
     position: absolute;
     left: 50%;
     top: 178px;

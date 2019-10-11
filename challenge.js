@@ -32,6 +32,8 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
         var diceDOM = document.querySelector('.dice');//---select the dice and store into the variable
         diceDOM.style.display = 'block'//---change style here 
         diceDOM.src = 'dice-' + dice + '.png';//---you have images from 1 to 6 just change the number like this
+        
+        //here implement if the roll two 6 the score will be 0
         if(dice === 6 && lastDice === 6){
             scores[activePlayer] = 0;
             document.querySelector('#score-' + activePlayer).textContent = '0';
@@ -58,10 +60,17 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
 
         scores[activePlayer] += roundScore;
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
-    
+        var input = ocument.querySelector('.final-score').value;
+        var winningScore;
+        
+        if(input){
+            winningScore = input;
+        }else{
+            winningScore = 100;
+        }
     
         //check if the player won
-        if(scores[activePlayer] >= 100){
+        if(scores[activePlayer] >= winningScore){
             document.querySelector('#name-' + activePlayer).textContent = 'Winner!!!';
             document.querySelector('.dice').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');

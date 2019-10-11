@@ -1,6 +1,26 @@
 /**********************************************
 *** GENERAL
 **********************************************/
+.final-score{
+    position: absolute;
+    left: 50%;
+    top: 520px;
+    transform: translateX(-50%);
+    color: #555;
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Lato';
+    padding: 10px;
+    width: 160px;
+    text-transform: uppercase;
+}
+
+/* this how you take out the blue border when you put your mouse over */
+.final-score:focus{
+    outline: none;
+}
+
+
 
 * {
     margin: 0;
